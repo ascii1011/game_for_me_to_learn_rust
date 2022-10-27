@@ -3,6 +3,7 @@
     "weaponMarkupMin": 2.0,
     "weaponMarkupMax": 80.0,
     "cash": 10.0,
+    "score": 0.0,
     "weapons": [
       {"name": "uzi", "price": 200.99},
       {"name": "mac", "price": 300.99},
