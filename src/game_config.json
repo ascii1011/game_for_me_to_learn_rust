@@ -1,0 +1,16 @@
+{
+    "health": 100.0,
+    "weaponMarkupMin": 2.0,
+    "weaponMarkupMax": 80.0,
+    "cash": 10.0,
+    "weapons": [
+      {"name": "uzi", "price": 200.0},
+      {"name": "mac", "price": 300.0},
+      {"name": "ak", "price": 450.0}
+    ],
+    "cities": [
+      {"name": "Neddick"},
+      {"name": "Dakota"},
+      {"name": "lakapoha"}
+    ]
+  }
