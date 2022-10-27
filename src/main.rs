@@ -76,20 +76,30 @@ fn randomize_u32(min: f32, max: f32) -> f32 {
 fn get_current_weapons(default_weapons: Vec<Weapon>, markup_min:f32, markup_max:f32) -> Vec<Weapon> {
 
     //println!("config Weapons: {:#?}", config.weapons);
+    println!("\nUpdating weapon prices...");
 
     let mut current_weapons: Vec<Weapon> = default_weapons;
 
     for w in current_weapons.iter_mut() {
         let mut markup = randomize_u32(markup_min, markup_max);
+        println!("updating price for {} (${} + ${} => new price ${}", w.name, w.price, markup, w.price + markup);
         w.price += markup;
         w.price = f32::trunc(w.price * 100.0) / 100.0;
     }
+    /*
     for weapon in current_weapons.iter() {
         println!("{}", weapon);
     }
     println!("current Weapons: {:#?}", current_weapons);
-
+    */
     current_weapons
+}
+
+fn display_weapons(label: &str, weapons: Vec<Weapon>) {
+    println!("\n{} weapons:", label);
+    for w in weapons.iter() {
+        println!("{}",w);
+    }
 }
 
 
@@ -103,12 +113,15 @@ impl MyGame {
     pub fn new(_ctx: &mut Context) -> MyGame {
         // Load/create resources such as images here.
         let mut default_config: Root = get_config();
+
+        display_weapons("default", default_config.weapons.clone());
         let current_weapons: Vec<Weapon> = get_current_weapons(
             default_config.weapons.clone(),
             default_config.weapon_markup_min,
             default_config.weapon_markup_max
         );
 
+        display_weapons("current", current_weapons.clone());
         //initialize game state (instance)
         MyGame {
             current_weapons,
@@ -120,19 +133,23 @@ impl MyGame {
 impl EventHandler for MyGame {
     fn update(&mut self, _ctx: &mut Context) -> GameResult<()> {
         // Update code here...
+
+
         Ok(())
     }
 
     fn draw(&mut self, ctx: &mut Context) -> GameResult<()> {
-        graphics::clear(ctx, Color::BLACK);
+        graphics::clear(ctx, Color::WHITE);
         // Draw code here...
         //let (screen_w, screen_h) = graphics::drawable_size(ctx);
+        //println!("weapon 0: {}", self.current_weapons[0].name);
         let score_text = graphics::Text::new(format!(
             "{}         {}",
             self.current_weapons[0].name, self.current_weapons[1].name
         ));
-        let screen_w = graphics::drawable_size(ctx).0;
-        let screen_w_half = screen_w * 0.5;
+        //let screen_w = graphics::drawable_size(ctx).0;
+        //let screen_w_half = screen_w * 0.5;
+        //graphics::draw(ctx, &score_text)?;
 
         graphics::present(ctx)
     }
@@ -140,7 +157,7 @@ impl EventHandler for MyGame {
 
 
 fn main() -> GameResult {
-    //println!("Welcome to city_wars hell :)");
+    println!("\n##########################\nWelcome to city_wars:)");
 
     // Make a Context.
     let (mut ctx, event_loop) = ggez::ContextBuilder::new("Rusty Dope Warz", "astrov1")
@@ -157,6 +174,7 @@ fn main() -> GameResult {
     // Run!
     event::run(ctx, event_loop, my_game);
 
+    println!("\n### end main ###");
     Ok(())
     
 }

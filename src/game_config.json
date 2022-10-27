@@ -4,9 +4,9 @@
     "weaponMarkupMax": 80.0,
     "cash": 10.0,
     "weapons": [
-      {"name": "uzi", "price": 200.0},
-      {"name": "mac", "price": 300.0},
-      {"name": "ak", "price": 450.0}
+      {"name": "uzi", "price": 200.99},
+      {"name": "mac", "price": 300.99},
+      {"name": "ak", "price": 450.99}
     ],
     "cities": [
       {"name": "Neddick"},
