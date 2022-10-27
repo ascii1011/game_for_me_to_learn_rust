@@ -16,12 +16,14 @@ use rand::{self, thread_rng,Rng};
 use serde::{Deserialize, Serialize};
 //use serde_json::{Result, Value};
 
-/* immitation of an old dos game called Drug Wars */
+/* immitation of an old shell game called with a twist */
+
 #[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
     pub health: f32,
     pub cash: f32,
+    pub score: f32,
     pub weapon_markup_min: f32,
     pub weapon_markup_max: f32,
     pub weapons: Vec<Weapon>,
