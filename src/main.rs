@@ -16,6 +16,7 @@ use rand::{self, thread_rng,Rng};
 use serde::{Deserialize, Serialize};
 //use serde_json::{Result, Value};
 
+/* immitation of an old dos game called Drug Wars */
 #[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
