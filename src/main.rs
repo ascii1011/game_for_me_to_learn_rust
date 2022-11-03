@@ -133,6 +133,13 @@ impl MyGame {
     }
 }
 
+const GAME_WINDOW_HEIGHT: f32 = 400.0;
+const GAME_WINDOW_WIDTH: f32 = 600.0;
+const BORDER_PADDING_HEIGHT: f32 = 20.0;
+const BORDER_PADDING_WIDTH: f32 = 40.0;
+const HORIZ_FRAME_HEIGHT: f32 = 10.0;
+const VERT_FRAME_WIDTH: f32 = 20.0;
+
 impl EventHandler for MyGame {
     fn update(&mut self, _ctx: &mut Context) -> GameResult<()> {
         // Update code here...
@@ -142,8 +149,10 @@ impl EventHandler for MyGame {
     }
 
     fn draw(&mut self, ctx: &mut Context) -> GameResult<()> {
-        graphics::clear(ctx, Color::WHITE);
-        // Draw code here...
+        graphics::clear(ctx, Color::BLACK);
+        
+        let game_frame_top_rec = graphics::Rect::new()
+        
         //let (screen_w, screen_h) = graphics::drawable_size(ctx);
         //println!("weapon 0: {}", self.current_weapons[0].name);
         let score_text = graphics::Text::new(format!(
@@ -163,7 +172,7 @@ fn main() -> GameResult {
     println!("\n##########################\nWelcome to city_wars:)");
 
     // Make a Context.
-    let (mut ctx, event_loop) = ggez::ContextBuilder::new("Rusty Dope Warz", "astrov1")
+    let (mut ctx, event_loop) = ggez::ContextBuilder::new("Rusty City Warz", "astrov1")
         .build()
         .expect("aieee, could not create ggez context!");
 
